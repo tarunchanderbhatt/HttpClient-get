@@ -28,6 +28,34 @@
     </tbody>
   </table>
 
+  <hr />
+
+  <table class="table">
+    <tr>
+      <th colspan="6" class="text-left   bg-danger">
+        Requsting Json using HttpClient.get with Async Pipe method
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Sno</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Class Room</th>
+      <th scope="col">Roll Number</th>
+      <th scope="col">School</th>
+    </tr>
+    <tr *ngFor="let stu of varAsync | async">
+      <td>{{ stu.id }}</td>
+      <td>{{ stu.name }}</td>
+      <td>{{ stu.age }}</td>
+      <td>{{ stu.room }}</td>
+      <td>{{ stu.roll }}</td>
+      <td>{{ stu.school }}</td>
+    </tr>
+  </table>
+
+  <hr />
+  <hr />
   <table class="table">
     <th class="bg-info">
       <tr class="text-center">
@@ -37,6 +65,16 @@
 
     <tr>
       <td>{{ msg }}</td>
+    </tr>
+
+    <th class="bg-info">
+      <tr class="text-center">
+        Requsting Text using HttpClient.get with Async Pipe method text Formate
+      </tr>
+    </th>
+
+    <tr>
+      <td>{{ msgAsyinc | async }}</td>
     </tr>
   </table>
 
@@ -68,6 +106,34 @@
         <td>{{ parData.school }}</td>
       </tr>
     </tbody>
+  </table>
+
+  <br /><br />
+  <table class="table">
+    <thead>
+      <tr class="bg-warning">
+        <th colspan="6" class="text-left ">
+          Requsting Json using HttpClient.get with subcribe method Query
+          parameters
+        </th>
+      </tr>
+      <tr>
+        <th scope="col">Sno</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Class Room</th>
+        <th scope="col">Roll Number</th>
+        <th scope="col">School</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let fil of queryStrint_asy | async">
+      <td>{{ fil.id }}</td>
+      <td>{{ fil.name }}</td>
+      <td>{{ fil.age }}</td>
+      <td>{{ fil.room }}</td>
+      <td>{{ fil.roll }}</td>
+      <td>{{ fil.school }}</td>
+    </tr>
   </table>
 </div>
 <router-outlet></router-outlet>

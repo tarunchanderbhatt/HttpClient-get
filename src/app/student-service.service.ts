@@ -11,7 +11,7 @@ export class StudentServiceService {
   messUrl = "/api/welcome";
   constructor(private http: HttpClient) {}
 
-  // json Formate
+  // json Formate Subscriation
   getStudent(): Observable<TypeCasting[]> {
     return this.http.get<TypeCasting[]>(this.apiurl, { responseType: "json" });
   }
