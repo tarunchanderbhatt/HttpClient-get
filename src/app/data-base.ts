@@ -27,9 +27,19 @@ export class DataBase implements InMemoryDbService {
         room: "1th B",
         roll: 10,
         school: "D . A . V"
+      },
+      {
+        id: 4,
+        name: "Urmila Bhatt",
+        age: 35,
+        room: "12th B",
+        roll: 21,
+        school: "N T T"
       }
     ];
-    let welcomeMess = "Welcome to The SahoSoft Angular Class";
-    return { studentDetail: classDetail, messWel: welcomeMess };
+
+    //Text Data
+    let welcomeMess = "Welcome to Tarun Chander Bhatt Please  :)";
+    return { studentDetail: classDetail, welcome: welcomeMess };
   }
 }

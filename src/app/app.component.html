@@ -1,40 +1,73 @@
 <div class="container">
-  <h1 class="display-4 text-center">Observables and Subscribe</h1>
-  <h2 class="display-4">Async Filter</h2>
-  <ul>
-    <ng-template ngFor let-data [ngForOf]="myStudentAsinc | async">
-      <ng-template [ngIf]="data.id == 1">
-        <li>
-          {{ data.id }} -- {{ data.name }} -- {{ data.age }} --
-          {{ data.school }} --
-          {{ data.room }}
-        </li>
-      </ng-template>
-    </ng-template>
-  </ul>
-  <br />
-  <hr />
-  <br />
+  <table class="table  ">
+    <thead>
+      <tr>
+        <th colspan="6" class="text-left   bg-danger">
+          Requsting Json using HttpClient.get with subcribe method
+        </th>
+      </tr>
+      <tr>
+        <th scope="col">Sno</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Class Room</th>
+        <th scope="col">Roll Number</th>
+        <th scope="col">School</th>
+      </tr>
+    </thead>
 
-  <h2 class="display-4 text-center">Observables Subscribe and id</h2>
-  <div *ngIf="sId; else loading">
-    {{ sId.id }} | {{ sId.name }} | {{ sId.age }}
-  </div>
-  <ng-template #loading>
-    <img src="../assets/805.gif" />
-  </ng-template>
+    <tbody>
+      <tr *ngFor="let data of stuDetail">
+        <td>{{ data.id }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.room }}</td>
+        <td>{{ data.roll }}</td>
+        <td>{{ data.school }}</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <br />
-  <hr />
-  <br />
+  <table class="table">
+    <th class="bg-info">
+      <tr class="text-center">
+        Requsting Text using HttpClient.get with subcribe method text Formate
+      </tr>
+    </th>
 
-  <h2 class="display-4 text-center">Observables Async pipe and id</h2>
-  <div *ngIf="sidAsinc | async as data4; else load">
-    {{ data4.id }} | {{ data4.name }} | {{ data4.age }}
-  </div>
-  <ng-template #load>
-    <img src="../assets/805.gif" />
-    Loader ...
-  </ng-template>
+    <tr>
+      <td>{{ msg }}</td>
+    </tr>
+  </table>
+
+  <table class="table  ">
+    <thead>
+      <tr class="bg-warning">
+        <th colspan="6" class="text-left ">
+          Requsting Json using HttpClient.get with subcribe method Query
+          parameters
+        </th>
+      </tr>
+      <tr>
+        <th scope="col">Sno</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Class Room</th>
+        <th scope="col">Roll Number</th>
+        <th scope="col">School</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let parData of varParma">
+        <td>{{ parData.id }}</td>
+        <td>{{ parData.name }}</td>
+        <td>{{ parData.age }}</td>
+        <td>{{ parData.room }}</td>
+        <td>{{ parData.roll }}</td>
+        <td>{{ parData.school }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <router-outlet></router-outlet>

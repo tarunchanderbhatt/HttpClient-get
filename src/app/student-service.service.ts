@@ -8,17 +8,26 @@ import { TypeCasting } from "./type-casting";
 })
 export class StudentServiceService {
   apiurl = "/api/studentDetail";
+  messUrl = "/api/welcome";
   constructor(private http: HttpClient) {}
 
-  methodClass(): Observable<TypeCasting[]> {
-    return this.http.get<TypeCasting[]>(this.apiurl);
+  // json Formate
+  getStudent(): Observable<TypeCasting[]> {
+    return this.http.get<TypeCasting[]>(this.apiurl, { responseType: "json" });
   }
 
-  methodId(id: number): Observable<TypeCasting> {
-    return this.http.get<TypeCasting>(this.apiurl + "/" + id);
+  // text Formate
+  getMess(): Observable<string> {
+    return this.http.get(this.messUrl, { responseType: "text" });
   }
 
-  methodidAsiynt(id: number): Observable<TypeCasting> {
-    return this.http.get<TypeCasting>(this.apiurl + "/" + id);
+  // Using httpHeader
+  filterStuden(age: number, name: string): Observable<TypeCasting[]> {
+    return this.http.get<TypeCasting[]>(
+      this.apiurl + "?age=" + age + "&name=" + name,
+      {
+        responseType: "json"
+      }
+    );
   }
 }

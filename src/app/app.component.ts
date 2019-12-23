@@ -1,7 +1,6 @@
-import { Component } from "@angular/core";
-import { StudentServiceService } from "./student-service.service";
 import { TypeCasting } from "./type-casting";
-import { Observable } from "rxjs";
+import { StudentServiceService } from "./student-service.service";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -10,53 +9,37 @@ import { Observable } from "rxjs";
 })
 export class AppComponent {
   title = "Coming Soon...";
-  myStudent: TypeCasting[];
-  myStudentAsinc: Observable<TypeCasting[]>;
-  studentFilter: TypeCasting[];
-  sId: TypeCasting; // sINGLE DATA for Subcribe
-  sidAsinc: Observable<TypeCasting>; // id data for Asinc pipe
-
+  stuDetail: TypeCasting[];
+  msg: string;
+  varParma: TypeCasting[];
   // Inject Service
-  constructor(private _serv: StudentServiceService) {}
+  constructor(private _service: StudentServiceService) {}
 
-  // call method jo hum html me use kerenge
   ngOnInit() {
-    this.student_Subscribe();
-    this.student_async();
-    this.student_Filster();
-    //this.getmyStudentid_subscribe();
-    this.getStudentId();
-    this.getasync();
+    this.getStudent();
+    this.studentTxt();
+    this.getPerameter();
   }
 
-  // Method Subscribt
-  student_Subscribe() {
-    this._serv.methodClass().subscribe(students => {
-      // debugger;
-      this.myStudent = students;
+  //Make Method
+
+  getStudent() {
+    this._service.getStudent().subscribe(data => {
+      this.stuDetail = data;
     });
   }
 
-  // Method Asinc
-  student_async() {
-    this.myStudentAsinc = this._serv.methodClass();
-  }
-
-  //Methos Student Fillter
-  student_Filster() {
-    this._serv.methodClass().subscribe(studentFilter => {
-      // this.studentFilter = studentFilter.filter(val => val.id == 1);
-      this.studentFilter = studentFilter.filter(val => val.id == 1);
+  studentTxt() {
+    this._service.getMess().subscribe(data1 => {
+      this.msg = data1;
     });
   }
 
-  getStudentId() {
-    this._serv.methodId(1).subscribe(data => {
-      this.sId = data;
-    });
-  }
+  //getParame
 
-  getasync() {
-    this.sidAsinc = this._serv.methodidAsiynt(3);
+  getPerameter() {
+    this._service.filterStuden(35, "Urmila Bhatt").subscribe(dataPar => {
+      this.varParma = dataPar;
+    });
   }
 }
